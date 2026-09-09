@@ -1,0 +1,23 @@
+name: intl_phone_number_input
+description: International phone number input for Flutter using Material UI and Google's libphonenumber data.
+version: 0.8.0
+homepage: https://github.com/devs-flutter-plugin/intl_phone_number_input
+repository: https://github.com/devs-flutter-plugin/intl_phone_number_input
+issue_tracker: https://github.com/devs-flutter-plugin/intl_phone_number_input/issues
+
+environment:
+  sdk: ">=3.13.0 <4.0.0"
+  flutter: ">=3.47.0"
+
+dependencies:
+  dlibphonenumber: ^1.1.71
+  equatable: ^2.1.0
+  flutter:
+    sdk: flutter
+  material_ui: ^1.2.0
+  sealed_countries: ^3.3.0
+
+dev_dependencies:
+  flutter_lints: ^6.0.0
+  flutter_test:
+    sdk: flutter
