@@ -1,7 +1,7 @@
 import 'package:dlibphonenumber/dlibphonenumber.dart' as dlib;
 import 'package:flutter/services.dart';
 import 'package:material_ui/material_ui.dart';
-import 'package:sealed_countries/sealed_countries.dart';
+import 'package:sealed_countries/sealed_countries.dart' hide Country;
 
 import '../models/country_model.dart';
 import '../utils/phone_number.dart';
