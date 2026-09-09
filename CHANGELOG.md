@@ -1,3 +1,8 @@
+## [0.8.1]
+
+- Fix `Country` type collision between the package model and `sealed_countries` in `input_widget.dart`.
+- Restore correct typing for country properties, comparators, popup menu entries, and compiler inference.
+
 ## [0.8.0]
 
 - Migrated from `package:flutter/material.dart` to the standalone `package:material_ui/material_ui.dart` package.
