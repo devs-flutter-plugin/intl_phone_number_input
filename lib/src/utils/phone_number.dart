@@ -23,11 +23,8 @@ enum PhoneNumberType {
 
 /// Represents a phone number and its country metadata.
 class PhoneNumber extends Equatable {
-  PhoneNumber({
-    this.phoneNumber,
-    this.dialCode,
-    this.isoCode,
-  }) : _hash = 1000 + Random().nextInt(98999);
+  PhoneNumber({this.phoneNumber, this.dialCode, this.isoCode})
+    : _hash = 1000 + Random().nextInt(98999);
 
   final String? phoneNumber;
   final String? dialCode;
@@ -55,7 +52,10 @@ class PhoneNumber extends Equatable {
 
     final util = dlib.PhoneNumberUtil.instance;
     final regionHint = isoCode.trim().toUpperCase();
-    final parsed = util.parse(phoneNumber, regionHint.isEmpty ? null : regionHint);
+    final parsed = util.parse(
+      phoneNumber,
+      regionHint.isEmpty ? null : regionHint,
+    );
     final resolvedRegion = util.getRegionCodeForNumber(parsed);
 
     return PhoneNumber(
@@ -103,8 +103,9 @@ class PhoneNumber extends Equatable {
       return null;
     }
 
-    final region =
-        dlib.PhoneNumberUtil.instance.getRegionCodeForCountryCode(countryCode);
+    final region = dlib.PhoneNumberUtil.instance.getRegionCodeForCountryCode(
+      countryCode,
+    );
     return region == 'ZZ' || region == '001' ? null : region;
   }
 

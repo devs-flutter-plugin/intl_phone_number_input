@@ -8,13 +8,13 @@ This fork targets the current standalone Flutter Material UI package and modern 
 
 - Flutter 3.47.0 or newer
 - Dart 3.13.0 or newer
-- `material_ui` 1.2.x
+- `material_ui` 1.3.x
 
 ## What changed in 0.8.0
 
 - Migrated all package/example/test UI imports from `package:flutter/material.dart` to `package:material_ui/material_ui.dart`.
 - Updated libphonenumber implementation to `dlibphonenumber ^1.1.71`.
-- Updated `equatable` to `^2.1.0` and `flutter_lints` to `^6.0.0`.
+- Updated `equatable` to `^3.0.0` and `flutter_lints` to `^6.0.0`.
 - Replaced bundled PNG country flags and the generated legacy country table with `sealed_countries ^3.3.0` metadata and Unicode emoji flags.
 - Kept the primary public API: `InternationalPhoneNumberInput`, `PhoneNumber`, `SelectorConfig`, `PhoneInputSelectorType`, `PhoneNumberType`, and `CountryComparator`.
 - Added a self-hosted GitHub Actions validation pipeline.

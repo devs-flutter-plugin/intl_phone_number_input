@@ -3,11 +3,7 @@
 import '../models/country_model.dart';
 
 /// Country selector presentation mode.
-enum PhoneInputSelectorType {
-  DROPDOWN,
-  BOTTOM_SHEET,
-  DIALOG,
-}
+enum PhoneInputSelectorType { DROPDOWN, BOTTOM_SHEET, DIALOG }
 
 /// Function signature used to customize country ordering.
 typedef CountryComparator = int Function(Country a, Country b);

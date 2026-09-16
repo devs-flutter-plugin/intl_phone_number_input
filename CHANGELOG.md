@@ -1,3 +1,8 @@
+## [0.8.2]
+
+- Updated `equatable` to 3.0.0 and `material_ui` to 1.3.0.
+- Updated the example and resolved dependency lockfiles.
+
 ## [0.8.1]
 
 - Fix `Country` type collision between the package model and `sealed_countries` in `input_widget.dart`.

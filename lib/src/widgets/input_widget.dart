@@ -201,9 +201,8 @@ class _InternationalPhoneNumberInputState
     final requestedIso = (preferredIso ?? widget.initialValue?.isoCode)
         ?.trim()
         .toUpperCase();
-    _country = _findCountry(requestedIso) ??
-        _findCountry('US') ??
-        _countries.first;
+    _country =
+        _findCountry(requestedIso) ?? _findCountry('US') ?? _countries.first;
   }
 
   Country? _findCountry(String? isoCode) {
@@ -229,7 +228,10 @@ class _InternationalPhoneNumberInputState
     final iso = initial.isoCode?.toUpperCase() ?? _country?.alpha2Code;
     try {
       final parsed = _phoneUtil.parse(initial.phoneNumber, iso);
-      final national = _phoneUtil.format(parsed, dlib.PhoneNumberFormat.national);
+      final national = _phoneUtil.format(
+        parsed,
+        dlib.PhoneNumberFormat.national,
+      );
       _setControllerText(widget.formatInput ? national : _digitsOnly(national));
     } on Object {
       _setControllerText(initial.parseNumber());
@@ -383,8 +385,8 @@ class _InternationalPhoneNumberInputState
     final picker = _CountryPicker(
       countries: _countries,
       selected: _country,
-      showFlags: widget.selectorConfig.showFlags &&
-          widget.selectorConfig.useEmoji,
+      showFlags:
+          widget.selectorConfig.showFlags && widget.selectorConfig.useEmoji,
       autoFocus: widget.autoFocusSearch,
       searchBoxDecoration: widget.searchBoxDecoration,
     );
@@ -506,8 +508,10 @@ class _InternationalPhoneNumberInputState
       if (example == null) {
         return explicit;
       }
-      final national =
-          _phoneUtil.format(example, dlib.PhoneNumberFormat.national);
+      final national = _phoneUtil.format(
+        example,
+        dlib.PhoneNumberFormat.national,
+      );
       return national.replaceAll(RegExp(r'[0-9]'), widget.hintCharacter!);
     } on Object {
       return explicit;
@@ -552,10 +556,9 @@ class _InternationalPhoneNumberInputState
       return _buildTextField(prefixIcon: selector);
     }
 
-    final bottomPadding =
-        _controller.text.isNotEmpty && !_lastValid
-            ? widget.selectorButtonOnErrorPadding
-            : 0.0;
+    final bottomPadding = _controller.text.isNotEmpty && !_lastValid
+        ? widget.selectorButtonOnErrorPadding
+        : 0.0;
 
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -599,14 +602,18 @@ class _CountryPickerState extends State<_CountryPicker> {
     final visible = normalizedQuery.isEmpty
         ? widget.countries
         : widget.countries
-            .where(
-              (country) =>
-                  country.name.toLowerCase().contains(normalizedQuery) ||
-                  country.alpha2Code.toLowerCase().contains(normalizedQuery) ||
-                  country.alpha3Code.toLowerCase().contains(normalizedQuery) ||
-                  country.dialCode.contains(normalizedQuery),
-            )
-            .toList(growable: false);
+              .where(
+                (country) =>
+                    country.name.toLowerCase().contains(normalizedQuery) ||
+                    country.alpha2Code.toLowerCase().contains(
+                      normalizedQuery,
+                    ) ||
+                    country.alpha3Code.toLowerCase().contains(
+                      normalizedQuery,
+                    ) ||
+                    country.dialCode.contains(normalizedQuery),
+              )
+              .toList(growable: false);
 
     return Padding(
       padding: const EdgeInsets.all(16),
@@ -614,7 +621,8 @@ class _CountryPickerState extends State<_CountryPicker> {
         children: [
           TextField(
             autofocus: widget.autoFocus,
-            decoration: widget.searchBoxDecoration ??
+            decoration:
+                widget.searchBoxDecoration ??
                 const InputDecoration(
                   hintText: 'Search country',
                   prefixIcon: Icon(Icons.search),
@@ -631,8 +639,7 @@ class _CountryPickerState extends State<_CountryPicker> {
                       final country = visible[index];
                       return ListTile(
                         selected: country == widget.selected,
-                        leading:
-                            widget.showFlags ? Text(country.emoji) : null,
+                        leading: widget.showFlags ? Text(country.emoji) : null,
                         title: Text(country.name),
                         subtitle: Text(country.alpha2Code),
                         trailing: Text(country.dialCode),
